@@ -38,7 +38,7 @@
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\"nome\":\"Pedro\"}"
+        "text": "{\"nome\":\"Carlos\",\"cursos\":[{\"id\":1,\"nome\":\"Matemática\"},{\"id\":2,\"nome\":\"Português\"}]}"
       },
       "parameters": [],
       "headers": [

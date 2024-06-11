@@ -1,5 +1,7 @@
 package br.edu.infnet.dr1_tp3.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +28,7 @@ public class Curso {
 
     @ManyToMany(mappedBy = "cursos")
     @ToString.Exclude
+    @JsonIgnore
     private Set<Aluno> alunos = new HashSet<>();
 
 }

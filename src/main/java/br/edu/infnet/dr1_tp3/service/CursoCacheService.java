@@ -1,14 +1,22 @@
 package br.edu.infnet.dr1_tp3.service;
 
 import br.edu.infnet.dr1_tp3.model.Curso;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
+@Data
 public class CursoCacheService {
+
+    private final RedisTemplate<String, Object> redisTemplate;
+
     @Autowired
-    private RedisTemplate<String, Curso> redisTemplate;
+    public CursoCacheService(RedisTemplate<String, Object> redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
 
     private static final String KEY = "Curso";
 

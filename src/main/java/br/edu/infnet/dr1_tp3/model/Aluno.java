@@ -1,5 +1,6 @@
 package br.edu.infnet.dr1_tp3.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
@@ -26,6 +27,7 @@ public class Aluno {
             inverseJoinColumns = @JoinColumn(name = "curso_id")
     )
     @ToString.Exclude
+    @JsonManagedReference
     private Set<Curso> cursos = new HashSet<>();
 
     @Override
