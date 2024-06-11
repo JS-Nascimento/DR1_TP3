@@ -3,6 +3,8 @@ package br.edu.infnet.dr1_tp3.controller;
 import br.edu.infnet.dr1_tp3.model.Curso;
 import br.edu.infnet.dr1_tp3.service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +19,7 @@ public class CursoController {
     private CursoService cursoService;
 
     @GetMapping
+    @Cacheable("cursos")
     public List<Curso> getAllCursos() {
         return cursoService.findAll();
     }
@@ -47,6 +50,7 @@ public class CursoController {
     }
 
     @DeleteMapping("/{id}")
+    @CacheEvict(value = "cursos", allEntries = true)
     public ResponseEntity<Void> deleteCurso(@PathVariable Long id) {
         if (cursoService.findById(id).isPresent()) {
             cursoService.deleteById(id);
